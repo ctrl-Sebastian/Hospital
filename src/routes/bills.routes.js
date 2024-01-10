@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { authRequired } from "../middlewares/validateToken.js";
 
-import { 
+import { getUserBill,
     getBills, 
     getAllBills, 
     getBill, 
@@ -15,6 +15,10 @@ import { createBillSchema } from "../schemas/bill.schema.js";
 
 
 const router = Router()
+router.get('/user/:id', getUserBill)
+
+
+
 
 router.get('/all-bills', authRequired, getAllBills)
 

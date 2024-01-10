@@ -14,7 +14,7 @@ export const getBills = async (req, res) => {
 
 export const getUserBill = async (req, res) => {
     const bills = await Bill.find({
-        user
+        user: req.params.id
     })
     res.json(bills)
 }
@@ -30,7 +30,7 @@ export const createBill = async (req, res) => {
     const {balance, billStatus, description} = req.body
 
     const newBill = new Bill({
-        user: req.user.id,
+        user: req.params.id,
         balance, 
         billStatus, 
         description
