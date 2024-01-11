@@ -12,6 +12,7 @@ const billSchema = new mongoose.Schema({
     },
     billStatus: {
         type: String,
+        default: "active",
         required: true,
     },
     description: {

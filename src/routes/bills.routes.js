@@ -15,7 +15,7 @@ import { createBillSchema } from "../schemas/bill.schema.js";
 
 
 const router = Router()
-router.get('/users/:id', getUserBills)
+router.get('/usersBills/:id', getUserBills)
 
 
 
@@ -28,8 +28,8 @@ router.get('/bills/:id', authRequired, getBill)
 
 router.post('/bills', validateSchema(createBillSchema), createBill)
 
-router.delete('/bills/:id', authRequired, deleteBill)
+router.delete('/bills/:id', deleteBill)
 
-router.put('/bills/:id', authRequired, updateBill)
+router.put('/bills/:id', updateBill)
 
 export default router

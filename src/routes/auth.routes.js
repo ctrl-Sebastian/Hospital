@@ -1,11 +1,14 @@
 import { Router } from "express";
 import { 
     getAllUsers,
+    getUser,
     login, 
     register, 
     logout, 
     profile, 
-    verifyToken 
+    verifyToken, 
+    deleteUser,
+    updateUser
 } from "../controllers/auth.controller.js";
 import { authRequired } from "../middlewares/validateToken.js";
 import { validateSchema } from "../middlewares/validator.middleware.js";
@@ -19,6 +22,10 @@ router.post('/login', validateSchema(loginSchema), login)
 router.post('/logout', logout)
 
 router.get('/users', getAllUsers)
-router.get('/profile', authRequired, profile)
+router.get('/users/:id', getUser)
+
+router.delete('/users/:id', deleteUser)
+
+router.put('/users/:id', updateUser)
 
 export default router;

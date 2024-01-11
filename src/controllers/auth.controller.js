@@ -80,6 +80,26 @@ export const getAllUsers = async (req, res) => {
     res.json(users)
 };
 
+export const getUser = async (req, res) => {
+    const user = await User.findById(req.params.id)
+    if(!user) return res.status(404).json({ message: 'User not found'})
+    res.json(user)
+}
+
+export const deleteUser = async (req, res) => {
+    const user = await User.findByIdAndDelete(req.params.id)
+    if(!user) return res.status(404).json({ message: 'user not found'})
+    return res.sendStatus(204)
+}
+
+export const updateUser = async (req, res) => {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true })
+    if(!user) return res.status(404).json({ message: 'user not found'})
+    res.json(user)
+}
+
+
+
 export const profile = async (req, res) => {
     const userFound = await User.findById(req.user.id)
 

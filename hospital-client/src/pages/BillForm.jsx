@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { postBill } from "../api/patients";
+import { postBill } from "../api/admin";
 
 function BillForm(props) {
   const {register, handleSubmit} = useForm()
@@ -17,7 +17,8 @@ function BillForm(props) {
 
   const onSubmit = handleSubmit( async (values) => {
     values.user = props.userId
-    values.monto = parseInt(values.monto)
+    values.billStatus = "active"
+    values.balance = parseInt(values.balance)
     console.log(values);
     addBill(values)
   })
@@ -25,11 +26,11 @@ function BillForm(props) {
   return (
     <div className='flex items-center justify-center'>
       <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
-        <h1>Create a bill</h1>
+      <h1 className='text-2xl font-bold'>Crear cuenta</h1>
         
           <form onSubmit={onSubmit}>
-            <input type="text" placeholder="monto"
-              {...register('monto')}
+            <input type="number" placeholder="monto"
+              {...register('balance')}
               className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
               autoFocus
             />

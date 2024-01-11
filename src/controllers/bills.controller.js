@@ -27,16 +27,15 @@ export const getBill = async (req, res) => {
 }
 
 export const createBill = async (req, res) => {
-    const {user, balance, description} = req.body
+    const {user, balance, billStatus, description} = req.body
 
     const newBill = new Bill({
         user,
         balance,
-        billStatus: "active",
+        billStatus,
         description
     })
     const savedBill = await newBill.save()
-    console.log(savedBill)
     res.json(savedBill)
 }
 
