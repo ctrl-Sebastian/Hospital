@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { authRequired } from "../middlewares/validateToken.js";
 
-import { getUserBills,
+import { 
+    getUserBills,
     getBills, 
     getAllBills, 
     getBill, 
@@ -31,5 +32,4 @@ router.post('/bills', validateSchema(createBillSchema), createBill)
 router.delete('/bills/:id', deleteBill)
 
 router.put('/bills/:id', updateBill)
-
 export default router

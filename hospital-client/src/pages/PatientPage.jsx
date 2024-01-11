@@ -4,6 +4,7 @@ import Accordion from '@mui/material/Accordion';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import Typography from '@mui/material/Typography';
+
 import { getPatientBills, getPatientById, deleteBillRequest } from '../api/admin'
 import BillForm from './BillForm'
 import UpdatePatientForm from '../components/UpdatePatientForm'
@@ -54,7 +55,7 @@ return (
       </AccordionDetails>
     </Accordion>
 
-    <Accordion defaultExpanded style={{backgroundColor: '#3F3F46'}}>
+    <Accordion style={{backgroundColor: '#3F3F46'}}>
       <AccordionSummary
         aria-controls="panel1-content"
         id="panel1-header"
@@ -68,8 +69,8 @@ return (
       </AccordionDetails>
     </Accordion>
 
-    <div className='flex flex-wrap items-center justify-center my-5'>
     <h1 className='text-2xl font-bold'>Todas las cuentas del paciente</h1>
+    <div className='flex flex-wrap items-center justify-center my-5'>
       {
           bills.map((bill) => {
               return(

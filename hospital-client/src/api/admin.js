@@ -18,3 +18,5 @@ export const getBillByIdRequest = (id) => instance.get(`/bills/${id}`)
 export const postBill = (bill) => instance.post(`/bills`, bill)
 export const updateBillRequest = (bill) => instance.put(`/bills/${bill._id}`, bill)
 export const deleteBillRequest = (id) => instance.delete(`/bills/${id}`)
+
+export const getTransactionsRequest = () => instance.get(`/transactions`)
