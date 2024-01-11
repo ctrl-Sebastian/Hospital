@@ -12,7 +12,7 @@ export const getBills = async (req, res) => {
     res.json(bills)
 }
 
-export const getUserBill = async (req, res) => {
+export const getUserBills = async (req, res) => {
     const bills = await Bill.find({
         user: req.params.id
     })
@@ -27,15 +27,16 @@ export const getBill = async (req, res) => {
 }
 
 export const createBill = async (req, res) => {
-    const {balance, billStatus, description} = req.body
+    const {user, balance, description} = req.body
 
     const newBill = new Bill({
-        user: req.params.id,
-        balance, 
-        billStatus, 
+        user,
+        balance,
+        billStatus: "active",
         description
     })
     const savedBill = await newBill.save()
+    console.log(savedBill)
     res.json(savedBill)
 }
 

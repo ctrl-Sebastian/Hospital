@@ -8,5 +8,5 @@ const instance = axios.create({
 })
 
 export const getPatients = () => instance.get(`/users`)
-export const getUserBills = (id) => instance.get(`/user/${id}`)
-
+export const getUserBills = (id) => instance.get(`/users/${id}`)
+export const postBill = (bill) => instance.post(`/bills`, bill)

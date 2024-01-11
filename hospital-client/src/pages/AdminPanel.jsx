@@ -24,7 +24,7 @@ function AdminPanel() {
             patients.map((patient) => {
                 return(
                     <div key={patient._id}>
-                        <h1><Link to={`/user/${patient._id}`}>{patient.username}</Link></h1>
+                        <h1><Link to={`/users/${patient._id}`}>{patient.username}</Link></h1>
                     </div>
                 )
             })

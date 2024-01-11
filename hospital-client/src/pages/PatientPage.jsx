@@ -1,13 +1,20 @@
 import { useState, useEffect } from 'react'
 import {Link} from 'react-router-dom'
 import { getUserBills } from '../api/patients'
+import BillForm from './BillForm'
 
 function PatientPage() {
   const [bills, setBills] = useState([])
+  const [userId, setUserId] = useState("")
+
   useEffect(() => {
+    var currentUrl = window.location.href;
+    var lastIndex = currentUrl.lastIndexOf('/');
+    var userId = currentUrl.substring(lastIndex + 1);
+    setUserId(userId)
       const getAllUserBills = async () => {
           try {
-              const res = await getUserBills("659dedf65b8706032be5611b")
+              const res = await getUserBills(userId)
               if (res.status === 200) {
                   setBills(res.data);
               }
@@ -19,7 +26,7 @@ function PatientPage() {
   }, []);
 return (
   <div>
-    <Link to="">Add bill</Link>
+        <BillForm userId={userId}/>
       {
           bills.map((bill) => {
               return(

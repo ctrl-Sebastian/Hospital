@@ -5,7 +5,7 @@ import HomePage from './pages/HomePage'
 import RegisterPage from './pages/RegisterPage'
 import LoginPage from './pages/LoginPage'
 import BillsPage from './pages/BillsPage'
-import BillFormPage from './pages/BillFormPage'
+import BillFormPage from './pages/BillForm'
 import PatientPage from './pages/PatientPage'
 import AdminPanel from './pages/AdminPanel'
 import ProtectedRoute from './ProtectedRoute'
@@ -19,13 +19,12 @@ function App() {
         <Route path='/login' element={<LoginPage />}/>
         <Route path='/register' element={<RegisterPage />}/>
         <Route path='/admin-panel' element={<AdminPanel />}/>
-        <Route path='/user/:id' element={<PatientPage/>}/>
+        <Route path='/users/:id' element={<PatientPage/>}/>
         
         <Route element={<ProtectedRoute />}>
 
           <Route path='/bills' element={<BillsPage />}/>
           <Route path='/add-bill' element={<BillFormPage />}/>
-          <Route path='/bill/:id' element={<BillFormPage />}/>
         </Route>
       </Routes>
       </BrowserRouter>

@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { authRequired } from "../middlewares/validateToken.js";
 
-import { getUserBill,
+import { getUserBills,
     getBills, 
     getAllBills, 
     getBill, 
@@ -15,7 +15,7 @@ import { createBillSchema } from "../schemas/bill.schema.js";
 
 
 const router = Router()
-router.get('/user/:id', getUserBill)
+router.get('/users/:id', getUserBills)
 
 
 
@@ -26,7 +26,7 @@ router.get('/bills', authRequired, getBills)
 
 router.get('/bills/:id', authRequired, getBill)
 
-router.post('/bills',authRequired, validateSchema(createBillSchema), createBill)
+router.post('/bills', validateSchema(createBillSchema), createBill)
 
 router.delete('/bills/:id', authRequired, deleteBill)
 
