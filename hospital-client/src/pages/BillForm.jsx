@@ -21,12 +21,13 @@ function BillForm(props) {
     values.balance = parseInt(values.balance)
     console.log(values);
     addBill(values)
+    location.reload()
   })
 
   return (
     <div className='flex items-center justify-center'>
       <div className='bg-zinc-800 max-w-md w-full p-10 rounded-md'>
-      <h1 className='text-2xl font-bold'>Crear cuenta</h1>
+      <h1 className='text-2xl font-bold text-cyan-200'>Crear cuenta</h1>
         
           <form onSubmit={onSubmit}>
             <input type="number" placeholder="monto"

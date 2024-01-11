@@ -30,7 +30,7 @@ function UpdatePatientForm() {
         ))
     }
     <form onSubmit={onSubmit}>
-        <h1 className='text-2xl font-bold'>Actualizar Paciente</h1>
+        <h1 className='text-2xl font-bold text-cyan-200'>Actualizar Paciente</h1>
         <input type="text" {...register("cedula")}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
             placeholder='cedula'
