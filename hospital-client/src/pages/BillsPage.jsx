@@ -1,21 +1,23 @@
 import { useState, useEffect } from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import { getBills, payBillRequest } from '../api/user'
+import { getBills, payBillRequest, postTransactionsRequest } from '../api/user'
 
 import { useAuth } from '../context/AuthContext'
 
 function BillsPage() {
   const [bills, setBills] = useState([])
   const [dineroGenerado, setDineroGenerado] = useState(0)
-
+  const {user} = useAuth()
   const navigate = useNavigate()
 
   useEffect(() => { 
+    console.log(user);
   const getAllUserBills = async () => {
       try {
           const res = await getBills()
           if (res.status === 200) {
               setBills(res.data);
+              
           }
       } catch (error) {
           console.log(error);
@@ -28,9 +30,18 @@ function BillsPage() {
     if(confirm('Are you sure?')){
       setDineroGenerado(dineroGenerado + bill.balance)
       bill.billStatus = "pagada"
-      const res = await payBillRequest(bill)
-      console.log(res);
-      navigate('/bills')
+      
+      const resToPayBill = await payBillRequest(bill)
+
+      if(resToPayBill.status === 200){
+
+          const resToPostTransaction = await postTransactionsRequest({user: user._id, bill: bill._id})
+          
+          if(resToPostTransaction.status === 200){
+              navigate('/bills')
+        }
+
+      }
 
   }
   }
