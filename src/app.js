@@ -1,5 +1,7 @@
 import express from "express";
 import morgan from "morgan";
+import fs from 'fs'
+import path from "path";
 import cookieParser from "cookie-parser";
 import cors from 'cors'
 
@@ -14,6 +16,10 @@ app.use(cors({
     credentials: true
 }))
 app.use(morgan('dev'))
+// log all requests to access.log
+app.use(morgan('common', {
+    stream: fs.createWriteStream('./access.log', {flags: 'a'})
+}));
 app.use(express.json())
 app.use(cookieParser())
 

@@ -48,7 +48,7 @@ function LoginPage() {
           />
           {errors.password && (<p className='text-red-500'>Password is required</p>)}
 
-          <button type='submit'>Log In</button>
+          <button type='submit' style={{fontWeight: 600, color: '#a5f3fc', backgroundColor: '#3f3f46', padding: 5, borderRadius: 5}}>Log In</button>
         </form>     
       </div>
     </div>

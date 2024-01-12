@@ -12,12 +12,24 @@ import UpdatePatientForm from '../components/UpdatePatientForm'
 function PatientPage() {
   const [bills, setBills] = useState([])
   const [userId, setUserId] = useState("")
+  const [user, setUser] = useState({})
 
   const navigate = useNavigate()
   const params = useParams()
-
+  
   useEffect(() => {
     setUserId(params.id)
+    const getThePatient = async () => {
+      try {
+          const res = await getPatientById(params.id)
+          if (res.status === 200) {
+              setUser(res.data);
+          }
+      } catch (error) {
+          console.log(error);
+      }
+    }
+    
     const getAllUserBills = async () => {
         try {
             const res = await getPatientBills(params.id)
@@ -28,20 +40,20 @@ function PatientPage() {
             console.log(error);
         }
       }
+      getThePatient()
       getAllUserBills()
     }, []);
 
     const deleteBill = async (id) => {
       if(confirm('Are you sure?')){
           const res = await deleteBillRequest(id)
-          console.log(res);
           location.reload();
       }
   }
 
 return (
   <div className='text-center'>
-    <Accordion style={{backgroundColor: '#3F3F46'}}>
+    <Accordion style={{backgroundColor: '#3F3F46'}} disableGutters>
       <AccordionSummary
         aria-controls="panel2-content"
         id="panel2-header"
@@ -51,11 +63,11 @@ return (
       </AccordionSummary>
 
       <AccordionDetails>
-        <UpdatePatientForm />
+        <UpdatePatientForm user={user}/>
       </AccordionDetails>
     </Accordion>
 
-    <Accordion style={{backgroundColor: '#3F3F46'}}>
+    <Accordion style={{backgroundColor: '#3F3F46'}} defaultExpanded disableGutters>
       <AccordionSummary
         aria-controls="panel1-content"
         id="panel1-header"
@@ -69,7 +81,7 @@ return (
       </AccordionDetails>
     </Accordion>
 
-    <h1 className='text-2xl font-bold'>Todas las cuentas del paciente</h1>
+    <h1 className='text-2xl mt-6 font-bold'>Todas las cuentas del paciente</h1>
     <div className='flex flex-wrap items-center justify-center my-5'>
       {
           bills.map((bill) => {

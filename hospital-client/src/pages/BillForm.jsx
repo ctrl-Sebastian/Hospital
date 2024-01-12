@@ -3,7 +3,6 @@ import { postBill } from "../api/admin";
 
 function BillForm(props) {
   const {register, handleSubmit} = useForm()
-
   const addBill = async (bill) => {
     try {
         const res = await postBill(bill)
@@ -31,6 +30,7 @@ function BillForm(props) {
         
           <form onSubmit={onSubmit}>
             <input type="number" placeholder="monto"
+            
               {...register('balance')}
               className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
               autoFocus
@@ -39,7 +39,7 @@ function BillForm(props) {
             className="w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2"
               {...register('description')}
             />
-            <button type="submit">Save</button>
+            <button type="submit" style={{fontWeight: 600, color: '#a5f3fc', backgroundColor: '#3f3f46', padding: 5, borderRadius: 5}}>Save</button>
           </form>
       </div>
     </div>

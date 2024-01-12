@@ -25,7 +25,7 @@ router.get('/all-bills', authRequired, getAllBills)
 
 router.get('/bills', authRequired, getBills)
 
-router.get('/bills/:id', authRequired, getBill)
+router.get('/bills/:id', getBill)
 
 router.post('/bills', validateSchema(createBillSchema), createBill)
 

@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
 import {useForm} from 'react-hook-form'
 import { useAuth } from '../context/AuthContext'
 import { updatePatientRequest } from '../api/admin'
 
-function UpdatePatientForm() {
-    const params = useParams()
+function UpdatePatientForm({user}) {
+
     const {
         register, 
         handleSubmit, 
@@ -14,9 +12,13 @@ function UpdatePatientForm() {
     const {errors: registerErrors } = useAuth()
 
     const onSubmit = handleSubmit( async (values) => {
-        values._id = params.id
-        console.log(values);
-        updatePatientRequest(values)
+        values._id = user._id
+        const userToSend = values
+        if(userToSend.cedula === "") delete userToSend.cedula
+        if(userToSend.username === "") delete userToSend.username
+        if(userToSend.email === "") delete userToSend.email
+        console.log(userToSend);
+        updatePatientRequest(userToSend)
     });
 
   return (
@@ -34,6 +36,7 @@ function UpdatePatientForm() {
         <input type="text" {...register("cedula")}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
             placeholder='cedula'
+            defaultValue={user.cedula}
         />
         
         {errors.cedula && (<p className='text-red-500'>Cedula is required</p>)}
@@ -41,6 +44,7 @@ function UpdatePatientForm() {
         <input type="text" {...register("username")}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
             placeholder='username'
+            defaultValue={user.username}
         />
 
         {errors.username && (<p className='text-red-500'>Username is required</p>)}
@@ -49,18 +53,12 @@ function UpdatePatientForm() {
         <input type="email" {...register("email")}
             className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
             placeholder='email'
+            defaultValue={user.email}
         />
 
         {errors.email && (<p className='text-red-500'>Email is required</p>)}
 
-
-        <input type="password" {...register("password")}
-            className='w-full bg-zinc-700 text-white px-4 py-2 rounded-md my-2'
-            placeholder='password'
-        />
-        {errors.password && (<p className='text-red-500'>Password is required</p>)}
-
-        <button type='submit'>Actualizar</button>
+        <button type='submit' style={{fontWeight: 600, color: '#a5f3fc', backgroundColor: '#3f3f46', padding: 5, borderRadius: 5}}>Actualizar</button>
     </form>
     </div>
 </div>

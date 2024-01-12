@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext"
 function Navbar() {
     const { isAuthenticated, logout, user } = useAuth()
   return (
-    <nav className="bg-zinc-700 my-3 flex justify-between py-5 px-10">
+    <nav className="bg-zinc-700 mb-3 flex justify-between py-5 px-10">
         <Link to="/">
             <h1 className="text-2xl font-bold">Sistema Hospital</h1>
         </Link>
