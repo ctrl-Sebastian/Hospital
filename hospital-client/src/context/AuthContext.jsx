@@ -17,6 +17,7 @@ export const AuthProvider = ({children}) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false)
     const [errors, setErrors] = useState([])
     const [loading, setLoading] = useState(true)
+    
 
     useEffect(() => {
       async function checkLogin() {
@@ -51,8 +52,7 @@ export const AuthProvider = ({children}) => {
         try {
             const res = await registerRequest(user)
             if (res.status === 200) {
-                setUser(res.data);
-                setIsAuthenticated(true);
+                console.log("Paciente registrado");
             }
         } catch (error) {
             if (Array.isArray(error.response.data)){

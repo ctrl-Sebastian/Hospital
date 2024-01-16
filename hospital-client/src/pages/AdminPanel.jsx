@@ -5,7 +5,7 @@ import { getPatients, deletePatient, getTransactionsRequest } from '../api/admin
 function AdminPanel() {
     const [patients, setPatients] = useState([])
     const [transactions, setTransactions] = useState([])
-    const [view, setView] = useState("");
+    const [view, setView] = useState("pacients");
     const navigate = useNavigate()
     
     useEffect(() => {
@@ -46,14 +46,14 @@ function AdminPanel() {
   return (
     <div className='flex flex-wrap items-center justify-center my-5'>
         <div className='max-w-md w-full text-center'>
-        <button onClick={() => setView("users")} className="bg-zinc-500 font-bold px-4 mx-3 py-1 rounded-sm">Users</button>
+        <button onClick={() => setView("pacients")} className="bg-zinc-500 font-bold px-4 mx-3 py-1 rounded-sm">Pacients</button>
 
         <button onClick={() => setView("transactions")} className="bg-zinc-500 font-bold mx-3 px-4 py-1 rounded-sm">Transactions</button>
 
         {
-            (view === "users") ? (
+            (view === "pacients") ? (
                 <section>
-                <h1 className='text-4xl my-3 '>Todos los usuarios: </h1>
+                <h1 className='text-4xl my-3 '>Todos los pacientes: </h1>
                 <Link to="/register" className="bg-green-800 font-bold px-4 py-1 rounded-sm">Registrar paciente</Link>
                 {
                     patients.map((patient) => {

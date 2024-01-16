@@ -19,7 +19,7 @@ function LoginPage() {
 
   useEffect(() => {
     if (isAuthenticated) {
-      navigate("/bills");
+      navigate("/user-panel");
     }
   }, [isAuthenticated]);
 
