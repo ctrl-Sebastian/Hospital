@@ -43,7 +43,7 @@ function AppointmentsPage() {
 
   return (
     <div className='flex flex-wrap items-center justify-center'>
-      <div className='bg-zinc-800 max-w-md w-full p-10 my-5 rounded-md'>
+      <div className='bg-zinc-1200 max-w-md w-full p-10 my-5 rounded-md'>
           <h1 className='text-2xl font-bold text-cyan-200'>Agendar cita</h1>
           <form onSubmit={onSubmit}>
             <input type="text" placeholder="Doctor a cargo"

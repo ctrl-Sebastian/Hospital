@@ -53,7 +53,7 @@ function ServicesPage() {
 
   return (
     <div className='flex flex-wrap items-center justify-center my-5'>
-      <div className='bg-zinc-800 max-w-full p-10 rounded-md max-w-md w-full text-center'>
+      <div className='bg-zinc-1200 max-w-full p-10 rounded-md max-w-md w-full text-center'>
         <div>
           <h1 className='text-2xl font-bold text-cyan-200 mb-5'>Solicitar Servicio</h1>
           <form onSubmit={onSubmit}>
