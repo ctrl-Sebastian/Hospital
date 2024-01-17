@@ -14,6 +14,7 @@ function AdminPanel() {
             try {
                 const res = await getPatients()
                 if (res.status === 200) {
+                    
                     setPatients(res.data);
                 }
             } catch (error) {
@@ -25,7 +26,9 @@ function AdminPanel() {
             try {
                 const res = await getTransactionsRequest()
                 if (res.status === 200) {
-                    setTransactions(res.data);
+                    const today = new Date()
+                    const todaysTransactions = res.data.filter(t => t.createdAt.substring(0, 10) === today.toISOString().substring(0, 10))
+                    setTransactions(todaysTransactions);
                 }
             } catch (error) {
                 console.log(error);
@@ -105,6 +108,8 @@ function AdminPanel() {
                                     <h1>Cuenta pagada: {transaction.bill.description}</h1>
                                     <h1>Monto: {transaction.bill.balance}</h1>
                                 </section>
+
+                                <h1>Fecha de la transaccion: {transaction.bill.createdAt}</h1>
                             </div>
                         )
                     })
