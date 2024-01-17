@@ -5,7 +5,9 @@ import { getPatients, deletePatient, getTransactionsRequest } from '../api/admin
 function AdminPanel() {
     const [patients, setPatients] = useState([])
     const [transactions, setTransactions] = useState([])
-    let totalGenerado = 0
+    var totalGenerado = 0
+    let totalGeneradoToShow = 0
+
     const [view, setView] = useState("pacients");
     const navigate = useNavigate()
     
@@ -41,6 +43,7 @@ function AdminPanel() {
     for (let i = 0; i < transactions.length; i++) {
         totalGenerado += transactions[i].bill.balance
     }
+    totalGeneradoToShow = totalGenerado
 
     const deleteUser = async (id) => {
         if(confirm('Are you sure?')){
@@ -53,7 +56,7 @@ function AdminPanel() {
         if(confirm('Hacer cuadre?')){
             
             console.log("Total generado en el dia: ", totalGenerado);
-            totalGenerado = 0;
+            totalGeneradoToShow = 0;
         }
     }
 
@@ -91,7 +94,7 @@ function AdminPanel() {
                 <section>
                 
                 <h1 className='text-4xl mt-5'>Caja: </h1>
-                <h2>Total generado: RD${totalGenerado}</h2>
+                <h2>Total generado hoy: RD${totalGeneradoToShow}</h2>
                 <button onClick={() => hacerCuadre()} className='bg-green-700 px-5 py-2 rounded-md mx-2 my-5'>Hacer cuadre</button>
                 <h1 className='text-4xl'>Todas las transacciones: </h1>
                 {
