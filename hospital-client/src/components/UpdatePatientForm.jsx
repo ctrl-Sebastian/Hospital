@@ -17,7 +17,6 @@ function UpdatePatientForm({user}) {
         if(userToSend.cedula === "") delete userToSend.cedula
         if(userToSend.username === "") delete userToSend.username
         if(userToSend.email === "") delete userToSend.email
-        console.log(userToSend);
         updatePatientRequest(userToSend)
     });
 

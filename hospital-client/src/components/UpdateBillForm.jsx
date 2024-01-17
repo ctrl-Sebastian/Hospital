@@ -15,7 +15,6 @@ function UpdateBillForm() {
             const res = await getBillByIdRequest(params.id)
             if (res.status === 200) {
                 setBill(res.data)
-                console.log(res.data);
             }
         } catch (error) {
             console.log(error);
@@ -28,7 +27,7 @@ function UpdateBillForm() {
         try {
             const res = await updateBillRequest(bill)
             if (res.status === 200) {
-              console.log("bill created");
+              console.log("bill updated");
             }
         } catch (error) {
           console.log(error);

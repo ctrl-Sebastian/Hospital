@@ -20,7 +20,6 @@ function ServicesPage() {
     };
 
     useEffect(() => { 
-      console.log(user);
     const getAllRequestedServices = async () => {
         try {
             const res = await getServicesRequest()
@@ -41,8 +40,7 @@ function ServicesPage() {
         const resToPostServiceRequest = await postServiceRequest(serviceBeignRequested)
   
         if(resToPostServiceRequest.status === 200){
-          console.log("service requested");
-            
+          console.log("service requested"); 
         }
     }
     }
@@ -50,7 +48,6 @@ function ServicesPage() {
   const onSubmit = handleSubmit( async (values) => {
       values.user = user.id
       values.service = serviceToRequest
-      console.log(values)
       postService(values);
     })
 

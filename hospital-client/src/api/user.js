@@ -9,7 +9,7 @@ const instance = axios.create({
 
 export const getBills = () => instance.get(`/bills`)
 export const payBillRequest = (bill) => instance.put(`/bills/${bill._id}`, bill)
-export const postTransactionsRequest = ({user, bill}) => instance.post(`/transactions`, {user, bill})
+export const postTransactionsRequest = (transaction) => instance.post(`/transactions`, transaction)
 
 
 export const getAppointmentsRequest = () => instance.get(`/appointments`)

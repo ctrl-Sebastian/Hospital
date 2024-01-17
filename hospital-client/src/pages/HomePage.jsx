@@ -17,7 +17,7 @@ function HomePage() {
       >
         <div className='mask' style={{ }}>
           <div className='d-flex justify-content-center align-items-center h-100'>
-              <h1 className='mb-3 text-5xl font-bold text-cyan-800'>Sistema de Hospital</h1>
+              <h1 className='mb-3 text-5xl font-bold text-cyan-800'> Centro Hospitalario Eleazar Rodriguez</h1>
               <h4 className='mb-3'></h4>
               <a className='btn btn-outline-light btn-lg' href='#!' role='button'>
                 <Link to="/login"><button className='bg-indigo-800 p-10 text-4xl font-bold rounded-md'>Login</button></Link>

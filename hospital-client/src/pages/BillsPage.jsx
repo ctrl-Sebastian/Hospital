@@ -11,7 +11,6 @@ function BillsPage() {
   const navigate = useNavigate()
 
   useEffect(() => { 
-    console.log(user);
   const getAllUserBills = async () => {
       try {
           const res = await getBills()
@@ -27,18 +26,24 @@ function BillsPage() {
   }, []);
 
   const payBill = async (bill) =>{
+    console.log("balnace de la cuenta: ", bill.balance);
+
     if(confirm('Are you sure?')){
-      setDineroGenerado(dineroGenerado + bill.balance)
+      const transaction = {user: user.id, bill: bill._id}
+
+      setDineroGenerado(dineroGenerado + parseInt(bill.balance))
+      console.log("dinero generado: ", dineroGenerado)
+
       bill.billStatus = "pagada"
       
       const resToPayBill = await payBillRequest(bill)
 
       if(resToPayBill.status === 200){
-
-          const resToPostTransaction = await postTransactionsRequest({user: user._id, bill: bill._id})
+          const resToPostTransaction = await postTransactionsRequest(transaction)
           
           if(resToPostTransaction.status === 200){
-              navigate('/bills')
+
+            navigate('/bills')
         }
 
       }

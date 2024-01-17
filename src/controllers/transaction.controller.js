@@ -1,7 +1,7 @@
 import Transaction from '../models/transaction.model.js'
 
 export const getTransactions = async (req, res) => {
-    const transactions = await Transaction.find()
+    const transactions = await Transaction.find().populate('user').populate('bill')
     res.json(transactions)
 }
 

@@ -38,7 +38,6 @@ function AdminPanel() {
     const deleteUser = async (id) => {
         if(confirm('Are you sure?')){
             const res = await deletePatient(id)
-            console.log(res);
             location.reload();
         }
     }
@@ -82,9 +81,17 @@ function AdminPanel() {
                 {
                     transactions.map((transaction) => {
                         return(
-                            <div key={transaction._id} className='bg-zinc-700 max-w-md w-full p-10 rounded-md my-2'>
-                                <h1>Paciente: {transaction.user}</h1>
-                                <h1>Cuenta pagada: {transaction.bill}</h1>
+                            <div key={transaction._id} className='bg-zinc-800 max-w-md w-full p-10 rounded-md my-2'>
+                                <section className='bg-zinc-700 max-w-md w-full p-10 rounded-md my-2'>
+                                    <h1>Paciente: {transaction.user.username}</h1>
+                                    <h1>cedula: {transaction.user.cedula}</h1>
+                                    <h1>email: {transaction.user.email}</h1>
+                                </section>
+
+                                <section className='bg-zinc-700 max-w-md w-full p-10 rounded-md my-2'>
+                                    <h1>Cuenta pagada: {transaction.bill.description}</h1>
+                                    <h1>Monto: {transaction.bill.balance}</h1>
+                                </section>
                             </div>
                         )
                     })
