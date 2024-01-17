@@ -5,6 +5,7 @@ import { getPatients, deletePatient, getTransactionsRequest } from '../api/admin
 function AdminPanel() {
     const [patients, setPatients] = useState([])
     const [transactions, setTransactions] = useState([])
+    let totalGenerado = 0
     const [view, setView] = useState("pacients");
     const navigate = useNavigate()
     
@@ -25,7 +26,6 @@ function AdminPanel() {
                 const res = await getTransactionsRequest()
                 if (res.status === 200) {
                     setTransactions(res.data);
-                    console.log(res.data);
                 }
             } catch (error) {
                 console.log(error);
@@ -35,10 +35,22 @@ function AdminPanel() {
         getAllPatients()
     }, []);
 
+    for (let i = 0; i < transactions.length; i++) {
+        totalGenerado += transactions[i].bill.balance
+    }
+
     const deleteUser = async (id) => {
         if(confirm('Are you sure?')){
             const res = await deletePatient(id)
             location.reload();
+        }
+    }
+
+    const hacerCuadre = () => {
+        if(confirm('Hacer cuadre?')){
+            
+            console.log("Total generado en el dia: ", totalGenerado);
+            totalGenerado = 0;
         }
     }
 
@@ -75,8 +87,9 @@ function AdminPanel() {
             ) : (
                 <section>
                 
-                <h1 className='text-4xl'>Caja: </h1>
-                <button onClick={() => console.log("cuadre")} className='bg-green-700 px-5 py-2 rounded-md mx-2 my-1'>Hacer cuadre</button>
+                <h1 className='text-4xl mt-5'>Caja: </h1>
+                <h2>Total generado: RD${totalGenerado}</h2>
+                <button onClick={() => hacerCuadre()} className='bg-green-700 px-5 py-2 rounded-md mx-2 my-5'>Hacer cuadre</button>
                 <h1 className='text-4xl'>Todas las transacciones: </h1>
                 {
                     transactions.map((transaction) => {
