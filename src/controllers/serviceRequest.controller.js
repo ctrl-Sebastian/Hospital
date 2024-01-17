@@ -7,7 +7,7 @@ export const getServiceRequests = async (req, res) => {
 
 
 export const createServiceRequest = async (req, res) => {
-    const {user, bill} = req.body
+    const {user, service, date} = req.body
 
     const newServiceRequest = new ServiceRequest({
         user,

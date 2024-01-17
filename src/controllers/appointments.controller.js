@@ -5,9 +5,8 @@ export const getAppointments = async (req, res) => {
     res.json(appointments)
 }
 
-
 export const createAppointment = async (req, res) => {
-    const {user, bill} = req.body
+    const {user, doctor, description, date} = req.body
 
     const newAppointment = new Appointment({
         user,

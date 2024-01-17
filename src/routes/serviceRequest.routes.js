@@ -8,8 +8,8 @@ import {
 
 
 const router = Router()
-router.get('/transactions', getServiceRequests)
-router.post('/transactions', createServiceRequest)
-router.delete('/transactions', deleteServiceRequest)
+router.get('/services', getServiceRequests)
+router.post('/services', createServiceRequest)
+router.delete('/services', deleteServiceRequest)
 
 export default router

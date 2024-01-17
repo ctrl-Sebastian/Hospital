@@ -1,3 +1,5 @@
+import React from 'react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 
@@ -38,6 +40,34 @@ function App() {
             <Route path='/services' element={<ServicesPage />}/>
           </Route>
         </Routes>
+        <footer className="footer">
+          <div className="container">
+            <div className="row">
+              <div className="footer-col">
+                <h4>company</h4>
+                <ul>
+                  <li><a href="#">about us</a></li>
+                  <li><a href="#">our services</a></li>
+                </ul>
+              </div>
+              <div className="footer-col">
+                <h4>get help</h4>
+                <ul>
+                  <li><a href="#">hospital@gmail.com</a></li>
+                </ul>
+              </div>
+              <div className="footer-col">
+                <h4>follow us</h4>
+                <div className="social-links">
+                  <a href="#">Fb</a>
+                  <a href="#">Ig</a>
+                  <a href="#">X</a>
+                  <a href="#">Tktk</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
       </BrowserRouter>
     </AuthProvider>
   )

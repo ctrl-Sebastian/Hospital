@@ -14,4 +14,6 @@ export const postTransactionsRequest = ({user, bill}) => instance.post(`/transac
 
 export const getAppointmentsRequest = () => instance.get(`/appointments`)
 export const postAppointmentRequest = (appointment) => instance.post(`/appointments`, appointment)
-export const postServiceRequest = (serviceToRequest) => instance.post(`/services`, serviceToRequest)
+
+export const getServicesRequest = () => instance.get(`/services`)
+export const postServiceRequest = (serviceBeignRequested) => instance.post(`/services`, serviceBeignRequested)
