@@ -48,7 +48,7 @@ function AdminPanel() {
         <div className='max-w-md w-full text-center'>
         <button onClick={() => setView("pacients")} className="bg-zinc-500 font-bold px-4 mx-3 py-1 rounded-sm">Pacients</button>
 
-        <button onClick={() => setView("transactions")} className="bg-zinc-500 font-bold mx-3 px-4 py-1 rounded-sm">Transactions</button>
+        <button onClick={() => setView("caja")} className="bg-zinc-500 font-bold mx-3 px-4 py-1 rounded-sm">Caja</button>
 
         {
             (view === "pacients") ? (
@@ -75,6 +75,9 @@ function AdminPanel() {
                 </section>
             ) : (
                 <section>
+                
+                <h1 className='text-4xl'>Caja: </h1>
+                <button onClick={() => console.log("cuadre")} className='bg-green-700 px-5 py-2 rounded-md mx-2 my-1'>Hacer cuadre</button>
                 <h1 className='text-4xl'>Todas las transacciones: </h1>
                 {
                     transactions.map((transaction) => {

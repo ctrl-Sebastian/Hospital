@@ -78,8 +78,6 @@ function BillsPage() {
           })
       }
       </div>
-
-      <button onClick={() => console.log("cuadre")} className='bg-green-700 px-5 py-2 rounded-md mx-2 my-1'>Hacer cuadre</button>
     </div>
   )
 }
